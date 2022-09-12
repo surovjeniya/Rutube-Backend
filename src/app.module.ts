@@ -10,6 +10,7 @@ import { getPostgresConfig } from './config/postgres.config';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { AuthMiddleware } from './middleware/auth.middleware';
+import { CommentModule } from './comment/comment.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { AuthMiddleware } from './middleware/auth.middleware';
     }),
     UserModule,
     AuthModule,
+    CommentModule,
   ],
 })
 export class AppModule implements NestModule {
