@@ -1,6 +1,13 @@
-import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BeforeInsert,
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { hash } from 'bcryptjs';
 import { Base } from 'src/util/base.util';
+import { CommentEntity } from 'src/comment/entity/comment.entity';
 
 @Entity({ name: 'user' })
 export class UserEntity extends Base {
@@ -31,7 +38,8 @@ export class UserEntity extends Base {
   description: string;
 
   videos: any;
-  comments: any;
+  @OneToMany(() => CommentEntity, (comment) => comment.author)
+  comments: CommentEntity;
   likes: any;
   subscribers: any;
   subscriptions: any;
